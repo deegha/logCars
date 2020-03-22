@@ -1,0 +1,90 @@
+.header-container {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  background-color: #ffffff;
+  z-index: 100;
+  opacity: 0.8;
+  box-shadow: #cccccc 3px -7px 14px 0px;
+
+
+  .header-sitelogo {
+    padding: 10px 40px;
+    a {
+      font-family: 'Cookie', cursive;
+      text-decoration: none;
+      color: #000000;
+      font-size: 30px;
+      font-weight: 100;
+    }
+  }
+
+  .header-navigation {
+    padding: 10px 40px;
+    ul {
+      display: inline-flex;
+      padding: 0;
+      margin: 0;
+      min-width: 200px;
+      font-size: 16px;
+      align-items: center;
+
+      li {
+        list-style: none;
+        margin-left: 40px;
+
+
+        a {
+          text-decoration: none;
+          color: #000000;
+
+          border-radius: 20px;
+          padding: 7px 0px;
+          font-size: 12px;
+
+          cursor: pointer;
+        }
+        p {
+          padding: 0;
+          margin: 0;
+          color: #000000;
+          // font-weight: 900;
+          font-family: 'Cookie', cursive;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.header-user {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .header-userImage {
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 10px;
+    .img {
+      width: 40px;
+      height: 40px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 50%;
+    }
+  }
+
+}
+
+body {
+  font-family: 'Spartan', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
