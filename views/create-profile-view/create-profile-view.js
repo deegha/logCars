@@ -110,7 +110,7 @@ export const CreateProfileView = ({ handleSubmit }) => {
             onChange={handleInputChange}
             value={inputs.email}
           />
-          {emailError !== "" && <p className={login-errorText}>{emailError}</p>}
+          {emailError !== "" && <p className={"login-errorText"}>{emailError}</p>}
         </div>
         <div className={"login-formItem"}>
           <input

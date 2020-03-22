@@ -129,7 +129,7 @@ export const UploadMusicView = ({ upload }) => {
                   ) : (
                     <input type="submit" className={"upload-btnSubmit"} value={"Upload"} />
                   )
-                ): ("Fill the required to contoinue") }
+                ): ("Fill the required to continue") }
               </div>
             </form>
           </div>

@@ -1,21 +1,32 @@
+import { useEffect } from "react"
 import { Header, Loader, Card } from "../../components"
 import "./styles.scss"
 
 
-export const HomePage = ({ authUser, items, loading, nextPage, noPage, setAndPlay, nowPlaying }) => {
+export const HomePage = ({ authUser, items, loading, nextPage, noPage, hasMore, setAndPlay, nowPlaying, loadMore, loadingMore }) => {
 
-  const  scrollCheck = event => {
-    const bottom = event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight;
-    if (bottom) {
-      console.log("At The Bottom"); //Add in what you want here
+  useEffect(() => {
+    function handleScroll() {
+      if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight-100)) {
+        if(hasMore) {
+          loadMore()
+        }
+      }
     }
-  };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasMore]);
+
+  const pageTitle = nowPlaying.title?nowPlaying.title:"Mellow Music"
 
   return (
-    <div >
-      <Header authUser={authUser} page={"Home"} />
-      <div className={"home-container"} onScroll={scrollCheck}>
-
+    <div>
+      <Header authUser={authUser} page={"Home"} title={`Home | ${pageTitle}`}  />
+      <div className={"home-container"} >
         <div className={"home-innerWrapper"}>
         {items.map(item => {
           const track = item.data()
@@ -24,6 +35,8 @@ export const HomePage = ({ authUser, items, loading, nextPage, noPage, setAndPla
           )
         })}
 
+        {loading && <div>Loading Music...</div>}
+        {loadingMore && <div>Loading More Music...</div>}
         </div>
         <div className={"home-innerWrapperleft"}>
           <h2>Popular Artists</h2>

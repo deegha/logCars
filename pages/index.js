@@ -1,9 +1,10 @@
 import { HomePage } from "../views/home-view/home-view"
-import firebase from "firebase/app";
-import "firebase/firestore";
+import firebase from "firebase/app"
+import "firebase/firestore"
 import usePagination from "firestore-pagination-hook"
+import { useEffect } from "react"
 
-const Home = ({ setAndPlay, nowPlaying }) => {
+const Home = ({ setAndPlay, nowPlaying, setPlaylist }) => {
 
   const db = firebase.firestore();
   const {
@@ -17,18 +18,29 @@ const Home = ({ setAndPlay, nowPlaying }) => {
   } = usePagination(
     db
       .collection("tracks")
-      .orderBy("createdAt", "asc"),
+      .orderBy("createdAt", "desc"),
     {
-      limit: 5
+      limit: 8
     }
   );
 
-  const nextSong = (preSong) => {
+  const playListItems = items.map(item => item.data())
 
-  }
+  useEffect(() => {
+    setPlaylist(playListItems)
+  },[playListItems.length])
+
+
 
   return (
-    <HomePage items={items} setAndPlay={setAndPlay} nowPlaying={nowPlaying} />
+    <HomePage
+      loadMore={loadMore}
+      items={items}
+      setAndPlay={setAndPlay}
+      loading={loading}
+      nowPlaying={nowPlaying}
+      hasMore={hasMore}
+      loadingMore={loadingMore} />
   )
 }
 

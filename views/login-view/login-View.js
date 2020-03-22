@@ -100,7 +100,7 @@ export const LoginView = ({ handleSubmit }) => {
         )}
 
         </div>
-        <p>
+        <p className={"login-createAcnText-area"}>
         {"or "}
           <Link href="/signup">
             <a className={"login-createAcnText"}>create an account</a>

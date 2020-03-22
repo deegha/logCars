@@ -15,6 +15,7 @@ class CustomDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="shortcut icon" href="/static/favicon.ico" />
           <script
             id="__MY_AUTH_USER_INFO"
             type="application/json"

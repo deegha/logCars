@@ -1,10 +1,11 @@
 
 
 .card-container {
+  border-bottom: 1px solid #f1f2f6;
   width: 100%;
-  padding: 10px;
+  padding: 10px 0;
   margin: 5px 0;
-  cursor: pointer;
+  cursor: initial;
 
   display: flex;
   justify-self: flex-start;
@@ -12,18 +13,62 @@
 
 
   .card-image {
-    width: 120px;
-    height: 120px;
-
+    width: 110px;
+    height: 110px;
+    transition: .5s ease;
     border-radius: 5px;
     background-size: cover;
     background-repeat: no-repeat;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+      background-color: rgba(0,0,0,0.5);
+
+      .middle {
+        opacity: 1;
+      }
   }
+
+    .middle {
+      transition: .5s ease;
+      opacity: 0;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      text-align: center;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    .play-button {
+      background-color: #ff793f;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 11px;
+      color: #fff;
+
+      img {
+        position: relative;
+        width: 30px;
+        left: 4px;
+      }
+    }
+  }
+  }
+
 
   .card-details {
     margin-left: 10px;
     width: 300px;
-    border-bottom: 1px solid #f1f2f6;
+
 
     h1 {
       text-transform: uppercase;
@@ -31,13 +76,20 @@
     }
 
     .card-details-one {
-      font-size: 10px;
+      font-size: 9px;
       margin: 10px 0;
-      color: #57606f;
+      color: #999;
+      font-weight: 100;
       display: flex;
       align-items: center;
 
+      a {
+        color: #000000;
+        text-decoration: none;
+      }
+
       .card-user-image {
+        cursor: pointer;
         width: 20px;
         height: 20px;
         border-radius: 50%;
@@ -67,18 +119,19 @@
 @media only screen and (max-width: 500px) {
   .card-container {
     padding: 10px 0;
+    border-bottom: 1px solid #f1f2f6;
+
     .card-image {
       width: 70px;
       height: 70px;
 
-      border-radius: 5px;
+      border-radius: 0px;
       background-size: cover;
       background-repeat: no-repeat;
     }
 
     .card-details {
-      max-width: 200px;
-
+      border-bottom: none;
       h1 {
         text-transform: uppercase;
         font-size: 10px;
@@ -112,3 +165,6 @@
   }
 
 }
+
+
+

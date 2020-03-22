@@ -9,16 +9,16 @@ export const validateEmail = (email) => {
 }
 
 
-// export const trackPageView = (url) => {
-//   try {
-//     window.gtag('config', 'UA-119670959-1', {
-//       page_location: url
-//     });
-//   } catch (error) {
-//     // silences the error in dev mode
-//     // and/or if gtag fails to load
-//   }
-// }
+export const trackPageView = (url) => {
+  try {
+    window.gtag('config', 'UA-226459781', {
+      page_location: url
+    });
+  } catch (error) {
+    // silences the error in dev mode
+    // and/or if gtag fails to load
+  }
+}
 
 
 // export const makeid = (length) => {

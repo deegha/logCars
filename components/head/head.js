@@ -1,10 +1,10 @@
 import NextHead from 'next/head';
 import { string } from 'prop-types';
 
-const defaultDescription = '';
-const defaultKeywords = '';
-const defaultOGURL = '';
-const defaultOGImage = '';
+const defaultDescription = "Mellow music is Srilanka's cloud for music lovers. People share and listn to music at Mellow Music."
+const defaultKeywords = 'music, sound, socialMedia, mellowMusic'
+const defaultOGURL = 'https://mellowmusic.xyz'
+const defaultOGImage = 'https://res.cloudinary.com/duqpgdc9v/image/upload/v1584875973/mellowMusic/mellowmusic-bg.png'
 
 const Head = (props) => (
   <NextHead>

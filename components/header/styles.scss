@@ -8,17 +8,27 @@
   background-color: #ffffff;
   z-index: 100;
   opacity: 0.8;
-  box-shadow: #cccccc 3px -7px 14px 0px;
+  box-shadow: #cccccc 5px 5px 14px 0px;
 
 
   .header-sitelogo {
-    padding: 10px 40px;
+    .header-siteimage {
+      display: flex;
+      width: 60px;
+      margin-right: 5px;
+      img {
+        width: 100%;
+      }
+    }
     a {
       font-family: 'Cookie', cursive;
       text-decoration: none;
       color: #000000;
       font-size: 25px;
       font-weight: 100;
+
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -93,8 +103,9 @@ body {
 @media only screen and (max-width: 600px) {
 
   .header-container  {
+    opacity: 1;
     .header-sitelogo {
-      padding: 10px;
+      padding: 0;
       a {
         font-family: 'Cookie', cursive;
         text-decoration: none;
