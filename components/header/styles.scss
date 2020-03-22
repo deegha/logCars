@@ -17,7 +17,7 @@
       font-family: 'Cookie', cursive;
       text-decoration: none;
       color: #000000;
-      font-size: 30px;
+      font-size: 25px;
       font-weight: 100;
     }
   }
@@ -29,7 +29,7 @@
       padding: 0;
       margin: 0;
       min-width: 200px;
-      font-size: 16px;
+      font-size: 12px;
       align-items: center;
 
       li {
@@ -53,7 +53,7 @@
           color: #000000;
           // font-weight: 900;
           font-family: 'Cookie', cursive;
-          font-size: 20px;
+          font-size: 12px;
         }
       }
     }
@@ -67,13 +67,13 @@
   align-items: center;
 
   .header-userImage {
-    width: 40px;
+    width: 30px;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 10px;
     .img {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       background-repeat: no-repeat;
       background-size: cover;
       border-radius: 50%;
@@ -88,3 +88,25 @@ body {
   margin: 0;
 }
 
+
+
+@media only screen and (max-width: 600px) {
+
+  .header-container  {
+    .header-sitelogo {
+      padding: 10px;
+      a {
+        font-family: 'Cookie', cursive;
+        text-decoration: none;
+        color: #000000;
+        font-size: 20px;
+        font-weight: 100;
+      }
+    }
+
+    .header-navigation  {
+      display: none;
+    }
+  }
+
+}
