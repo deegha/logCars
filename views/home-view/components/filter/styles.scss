@@ -1,0 +1,44 @@
+.filter-container {
+  width: 95%;
+  .filter-item {
+    margin-bottom: 15px;
+
+    .filter-item-button {
+      background-color: #34495e;
+        margin: 0 auto;
+        color: #f1f2f6;
+        font-weight: 700;
+        width: 103%;
+        padding: 10px 0;
+        border-radius: 2p;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-size: 12px;
+        cursor: pointer;
+        text-transform: capitalize;
+    }
+
+    .filter-item-text-field {
+      width: 100%;
+      padding: 5px 5px;
+      border-radius: 2px;
+      border: 1px solid #f1f2f6;
+      border-radius: 5px;
+      outline: none;
+      font-size: 16px;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+  .filter-container {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .filter-container--show {
+    display: block;
+  }
+}

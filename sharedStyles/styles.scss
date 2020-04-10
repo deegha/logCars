@@ -1,25 +1,7 @@
 
-
-.player {
-  animation: fade_in_show 2s;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+* {
+  touch-action: manipulation;
 }
-
-.player-header {
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 30px;
-    margin-right: 10px;
-  }
-
-  color: #000000;
-  font-size: 11px;
-}
-
 
 @keyframes fade_in_show {
   0% {
@@ -31,7 +13,6 @@
        height: 100%;
   }
 }
-
 
 .terms-contaienr {
   margin: 100px 0;
@@ -47,4 +28,19 @@
     padding: 0px 20px;
     line-height: 30px;
   }
+}
+
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100%;
+}
+
+
+body {
+  font-family: 'Roboto', sans-serif;
 }

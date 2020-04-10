@@ -36,7 +36,7 @@
       }
 
       .login-loginButton {
-        background-color: #ff793f;
+        background-color: #2b3b4e;
         margin: 0 auto;
         color: #f1f2f6;
         font-weight: 700;
@@ -51,7 +51,7 @@
       }
 
       .login-loginButtonDissabled{
-        background-color: #ff793f;
+        background-color: #2b3b4e;
         margin: 0 auto;
         color: #f1f2f6;
         font-weight: 700;
@@ -125,5 +125,23 @@
   }
   100% {
        opacity: 1;
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+  .login-container .login-innerWrapper {
+    width: 100%;
+  }
+
+  .login-container .login-innerWrapper .login-formContainer {
+    padding: 10px 25px;
+    border-radius: 0px;
+
+    .login-formItem {
+      .login-textInput{
+        font-size: 17px;
+      }
+    }
   }
 }

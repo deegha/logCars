@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import css from "./styles.scss"
 import logout from "../../services/logOut"
 import Head  from "../head/head"
 import withAuth from "../../services/withAuth"
+import searchicon from "../../static/search.png"
+import { APP_LOG } from "../../config/config"
 
 String.prototype.insert = function (index, string) {
   if (index > 0)
@@ -12,15 +14,27 @@ String.prototype.insert = function (index, string) {
   return string + this;
 }
 
-const Header = ({ authUser, page, title, description, keywords, url, ogImage }) => {
+const Header = ({ authUser, page, title, description, keywords, url, ogImage, search, setSearchText, loading }) => {
+  const [mobileMenu, toggleMobileMenu] = useState(false)
+  const inputEl = useRef(null)
+
+  useEffect(() => {
+      inputEl.current.focus()
+  }, [])
 
   const onClick = () => {
     logout()
   }
 
+  const openMobileMenu = () => {
+    toggleMobileMenu(!mobileMenu)
+  }
+
+
   return (
     <div className={"header-container"}>
       <Head
+        keywords={keywords}
         ogImage={ogImage}
         url={url}
         description={description}
@@ -30,35 +44,58 @@ const Header = ({ authUser, page, title, description, keywords, url, ogImage }) 
         <Link href={"/"}>
           <a className="text-xs">
             <span className={"header-siteimage"}>
-              <img src={"https://res.cloudinary.com/duqpgdc9v/image/upload/w_100/v1584875973/mellowMusic/mellowmusic-bg.png"} />
+              <img alt="carlogs" src={APP_LOG} />
             </span>
-          Mellow Music </a>
+            {/* <span className={"site-name"}>
+                Mellow Music
+            </span> */}
+          </a>
         </Link>
       </div>
+      <div className={`${!search ? "header-search-area--hide": "header-search-area"}`}>
 
-      <div className={"header-navigation"}>
+        <form onSubmit={search}>
+        <div className={"header-search-form-item"}>
+          <img src={searchicon} />
+          <input
+            ref={inputEl}
+            autoComplete="off"
+            className={"header-search-box"}
+            type="text"
+            id="searchText"
+            name="searchText"
+            placeholder="Search your vehicle "
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          { loading && <div className={"search-loading"} /> }
+          </div>
+        </form>
+
+
+      </div>
+      <div className={`header-navigation ${mobileMenu && "heade_mobile-menu"}`}>
         <ul>
+          <li>
+            <Link href={"/create"}>
+              <a className="text-xs">Sell your car</a>
+            </Link>
+          </li>
+          <li>
+            <Link href={"/terms"}>
+              <a className="text-xs">Terms & Conditions</a>
+            </Link>
+          </li>
           {authUser && (
               <li onClick={onClick}>
                 <a>Log out</a>
               </li>
           )}
-           <li>
-            <Link href={"/terms"}>
-              <a className="text-xs">Terms & Conditions</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/upload-music"}>
-              <a className="text-xs">Upload music</a>
-            </Link>
-          </li>
           <li>
             {authUser? (
               <div className={"header-user"}>
                 <p>Hey {authUser.displayName}!</p>
                 <div className={"header-userImage"}>
-                  {authUser.photoURL && (<div className={"img"} style={{backgroundImage: `url(${authUser.photoURL.insert(50, "w_100,h_100,c_fill/")})`}} />)}
+                  {authUser.photoURL && (<div className={"img"} style={{backgroundImage: `url(${authUser.photoURL})`}} />)}
                 </div>
 
               </div>
@@ -71,7 +108,11 @@ const Header = ({ authUser, page, title, description, keywords, url, ogImage }) 
           </li>
         </ul>
       </div>
-
+      <div className={"header-mobile-navigation"} onClick={openMobileMenu}>
+        <div className={"header-mobile-navigation-dot"} />
+        <div className={"header-mobile-navigation-dot"} />
+        <div className={"header-mobile-navigation-dot"} />
+      </div>
     </div>
   );
 };

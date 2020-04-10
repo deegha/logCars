@@ -2,10 +2,16 @@ import Header  from "./header/Header"
 import { Google } from "./google/google"
 import { DropDown } from "./drop-down/drop-down"
 import { Card } from "./card/card"
+import { Footer } from "./footer/fooer"
+import { Player } from "./player/player"
+import { PlayListComponent } from "./play-list/play-list"
 
 export {
   Header,
   Google,
   DropDown,
-  Card
+  Card,
+  Footer,
+  Player,
+  PlayListComponent
 }

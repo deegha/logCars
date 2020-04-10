@@ -1,30 +1,81 @@
 .header-container {
-  height: 60px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   position: fixed;
-  background-color: #ffffff;
+  background-color: #2b3b4e;
   z-index: 100;
-  opacity: 0.8;
+  opacity: 0.98;
   box-shadow: #cccccc 5px 5px 14px 0px;
+  color: #ffffff;
 
+
+  .header-search-form-item {
+    width: 600px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    background-color: #ffffff;
+
+    input {
+      padding: 2px 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 17px;
+      width: 90%;
+      background-color: #ffffff;
+      color: #000000;
+      outline: none;
+
+      &:active {
+        font-size: 17px;
+      }
+    }
+
+    img {
+      margin: 5px;
+      width: 15px;
+    }
+
+    .search-loading {
+      width: 10px;
+      height: 10px;
+      border-top: 1px solid #ffffff;
+      border-bottom: 1px solid #e67e22;
+      border-left: 1px solid #ff6b81;
+      border-right: 1px solid #0000;
+      border-radius: 50%;
+
+
+      -webkit-animation:spin 1s linear infinite;
+      -moz-animation:spin 1s linear infinite;
+      animation:spin 1s linear infinite;
+    }
+
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+  }
 
   .header-sitelogo {
     .header-siteimage {
       display: flex;
       width: 60px;
+      max-height: 40px;
       margin-right: 5px;
       img {
-        width: 100%;
+        width: 60px;
+        max-height: 40px;
       }
     }
     a {
-      font-family: 'Cookie', cursive;
       text-decoration: none;
       color: #000000;
-      font-size: 25px;
+      font-size: 17px;
       font-weight: 100;
 
       display: flex;
@@ -49,24 +100,27 @@
 
         a {
           text-decoration: none;
-          color: #000000;
+          color: #ffffff;
 
           border-radius: 20px;
           padding: 7px 0px;
           font-size: 12px;
-
+          font-weight: 400;
           cursor: pointer;
         }
         p {
           padding: 0;
           margin: 0;
-          color: #000000;
+          color: #ffffff;
           // font-weight: 900;
-          font-family: 'Cookie', cursive;
           font-size: 12px;
         }
       }
     }
+  }
+
+  .header-mobile-navigation {
+    display: none;
   }
 }
 
@@ -76,7 +130,9 @@
   justify-content: center;
   align-items: center;
 
+
   .header-userImage {
+    // border: 2px solid #000000;
     width: 30px;
     border-radius: 50%;
     overflow: hidden;
@@ -102,15 +158,71 @@ body {
 
 @media only screen and (max-width: 600px) {
 
+  .heade_mobile-menu {
+    animation: open-mobile-menu-animation 0.2s;
+    display: flex !important;
+    flex-direction: column;
+    background-color:#333;
+    position: absolute;
+    width: 100%;
+    color: #000;
+    top: 50px;
+    opacity: 0.96;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      list-style: none;
+      margin: 0;
+
+      li {
+        margin: 5px;
+        padding: 10px 0;
+        width: 100%;
+        color: #ffffff;
+
+        a {
+          color: #ffffff !important;
+          font-size: 17px !important;
+        }
+      }
+    }
+
+    .header-user {
+      display: flex;
+      justify-content: flex-start;
+      p {
+        display: none;
+      }
+    }
+  }
+
   .header-container  {
     opacity: 1;
+    justify-content: space-between;
+
+    .header-search-area {
+      width: 70%;
+    }
+
+
+
+    .header-search-form-item {
+      width: 100%;
+    }
+
     .header-sitelogo {
+      .site-name {
+        display: none;
+      }
+
       padding: 0;
       a {
         font-family: 'Cookie', cursive;
         text-decoration: none;
         color: #000000;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 100;
       }
     }
@@ -118,6 +230,35 @@ body {
     .header-navigation  {
       display: none;
     }
+
+    .header-mobile-navigation {
+      display: flex;
+      flex-direction: column;
+      width: 10%;
+      align-items: center;
+
+      .header-mobile-navigation-dot {
+        width: 10px;
+        background-color: #636e72;
+        width: 5px;
+        height: 5px;
+        margin: 2px;
+        border-radius: 50%;
+      }
+    }
   }
 
+}
+
+.header-search-area--hide {
+  display: none;
+}
+
+@keyframes open-mobile-menu-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

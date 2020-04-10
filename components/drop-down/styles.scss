@@ -1,55 +1,75 @@
 .dropDown-ddWrapper {
   width: 100%;
-  padding: 10px;
-  border-radius: 2p;
+  padding: 2px 5px;
+  border-radius: 2px;
   border: 1px solid #f1f2f6;
   border-radius: 5px;
   outline: none;
-  font-size: 12px;
+  font-size: 17px;
 
   .dropDown-ddHeaderTitle {
     color: #000000;
-    cursor: pointer;
+    cursor: default;
+    font-size: 16;
+    padding: 7px 10px;
+    text-transform: capitalize;
+
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .dropDown-ddHeaderTitle-icon {
+      cursor: pointer;
+      padding: 4px 5px;
+      border-radius: 50%;
+
+      &:hover {
+        background-color: #f1f2f6;
+      }
+    }
+
+    .dropDown-ddHeaderTitle-icons-area {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
   }
 
   .dropDown-ddHeaderTitlePlaceHolder {
-    color: #dfe4ea;
+    color: #555457;
+    font-size: 16;
+    padding: 7px 10px;
+    text-transform: capitalize;
+    cursor: default;
   }
 
-  .dropDown-ddList {
+  .dropDown-list {
     animation: fade_in_show 2s;
     background-color: #ffff;
     margin: 0;
     padding: 0;
     list-style: none;
-    max-height: 250px;
+    max-height: 300px;
     overflow-y: auto;
 
-    .dropDown-ddListItem {
+
+    .dropDown-item{
       margin: 10px;
-      border-bottom: 1px solid #f1f2f6;
-      padding: 10px;
+      // border-bottom: 1px solid #f1f2f6;
+      padding: 20px 10px;
+      text-transform: capitalize;
 
-      .dropDown-sectionHeading {
-        color: #ced6e0;
+      font-size: 15px;
+
+      margin: 12px 0;
+      cursor: pointer;
+      padding: 5px 20px;
+
+      &:hover {
+        background-color: #f1f2f6;
       }
-
-      ul {
-        list-style: none;
-
-        .dropDown-item {
-          font-size: 13px;
-
-          margin: 2px 0;
-          cursor: pointer;
-          padding: 5px;
-
-          &:hover {
-            background-color: #f1f2f6;
-          }
-        }
-      }
-
 
     }
   }

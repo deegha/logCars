@@ -1,7 +1,8 @@
 
 import  "./styles.scss"
 import Link from 'next/link'
-import play from "../../static/play-button.svg"
+import LazyLoad from "react-lazyload"
+import numeral from "numeral"
 
 String.prototype.insert = function (index, string) {
   if (index > 0)
@@ -10,39 +11,62 @@ String.prototype.insert = function (index, string) {
   return string + this;
 };
 
-export const Card = ({item, setAndPlay, nowPlaying}) => {
+export const Card = ({item}) => {
 
-  const title = item.title.length > 24? item.title.substring(0,23)+"..." : item.title
-  const isPlaying = nowPlaying.url === item.url
+  const title = item.title
+
   return (
+    <Link href={`/feed?vehicle=${item.id}`}>
+    <a>
     <div className={"card-container"} key={item.createdAt.nanoseconds}  >
-
-      <div className={"card-image"} style={{backgroundImage: `url(${item.image.insert(50, "w_400,h_400,c_fill/")})`}} onClick={()=> setAndPlay({
-      url: item.url,
-      title: item.title,
-      image: item.image,
-      id: item.url+"-"+item.url
-    })}>
-        <div className="middle">
-        {!isPlaying && <div className="play-button"><img src={play} /></div>}
-        </div>
-      </div>
+      <LazyLoad once={true}>
+      <div className={"card-image"} style={{backgroundImage: `url(${item.images.length?item.images[0].url.insert(50, "w_160,h_110,c_fill,f_auto,q_auto/"): default_car})`}} />
+      </LazyLoad>
       <div className={"card-details"}>
-        <div>
           <h1>{title}</h1>
-          <p className={"card-details-one"}>{item.genre.name} |
-          <Link href={{ pathname: 'profile', query: { name: "userIs" }}}><a>{item.author.displayName}</a></Link>
-           <span className={"card-user-image"} style={{backgroundImage: `url(${item.author.photoURL.insert(50, "w_100,h_100,c_fill/")})`}}/></p>
-          { isPlaying && (
-            <p>
-              <span className={"nowPlaying"}>Now Playing</span>
-            </p>
-          )}
-
-        </div>
-        <div>
-        </div>
+          <div className="card-attr card-price-tag">Rs {numeral(item.price).format('0,0')} <div className="card-attr card-price-tag--mil"> {numeral(item.price).format('0.00 a')}</div></div>
+          <div className="card-footer">
+            <p className="card-footer-attr ">{item.transmission} </p>
+            <p className="card-footer-attr ">{item.location && `| ${item.location}`}</p>
+            <p className="card-footer-attr ">{item.mileage && item.mileage > 0 && `| ${numeral(item.mileage).format('0,0')} KM`}</p>
+          </div>
       </div>
     </div>
+    </a>
+    </Link>
   )
 }
+
+
+// (
+//   <div className={css[outerCls]}>
+//   <Link prefetch href={`/feed?slug=${feed.id}`}>
+//     <a>
+//     <div className={css.container} key={feed.id} >
+
+//       <div className={css[imageCls]} style={{
+//         backgroundImage: `url(${feed.images.length?feed.images[0].url.insert(50, "w_160,h_110,c_fill/"): default_car})`
+//       }} />
+//       <div className={css.detailArea}>
+//           <h1>{feed.title}</h1>
+//           <p className={css.priceTag}>Rs {numeral(feed.price).format('0,0')}</p>
+//         <ul>
+//             { wWidth>320 && (
+//               <li>
+//                 <GiGears size={12} style={{marginRight: '5px'}} />
+//                 {feed.transmission}
+//               </li>
+//             )}
+
+//             <li>
+//             <MdLocationOn  size={12} style={{marginRight: '5px'}} />
+//             {feed.location}</li>
+//             <li>{feed.mileage}km</li>
+//           </ul>
+//       </div>
+
+//     </div>
+//     </a>
+//   </Link>
+//   </div>
+// )

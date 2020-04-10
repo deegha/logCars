@@ -18,7 +18,8 @@ const withAuth = (Component) => {
           authUser: {
             displayName:  authUser.displayName,
             photoURL: authUser.photoURL,
-            email: authUser.email
+            email: authUser.email,
+            uid: authUser.uid
           }
         });
       }else {

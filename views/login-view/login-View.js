@@ -56,8 +56,9 @@ export const LoginView = ({ handleSubmit }) => {
   };
 
   return (
+  <>
+  <Header />
   <div className={"login-container"}>
-    <Header />
     <div className={"login-innerWrapper"}>
       <div className={"login-formContainer"} >
         <h2 className={"login-formHeader"} >Login and continue</h2>
@@ -110,5 +111,6 @@ export const LoginView = ({ handleSubmit }) => {
       </div>
     </div>
   </div>
+  </>
   )
 }

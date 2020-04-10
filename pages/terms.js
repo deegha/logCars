@@ -13,7 +13,7 @@ const Terms = () => {
 <p>Last updated: 2020-03-22</p>
 <p>1. <b className="terms-heading">Introduction</b></p>
 <p>Welcome to <b className="terms-heading">Mellow Music</b> (“Company”, “we”, “our”, “us”)!</p>
-<p>These Terms of Service (“Terms”, “Terms of Service”) govern your use of our website located at <b className="terms-heading">https://mellowmusic.xyz/</b> (together or individually “Service”) operated by <b className="terms-heading">Mellow Music</b>.</p>
+<p>These Terms of Service (“Terms”, “Terms of Service”) govern your use of our website located at <b className="terms-heading">https://mellowmusic.xyz</b> (together or individually “Service”) operated by <b className="terms-heading">Mellow Music</b>.</p>
 <p>Our Privacy Policy also governs your use of our Service and explains how we collect, safeguard and disclose information that results from your use of our web pages.</p>
 <p>Your agreement with us includes these Terms and our Privacy Policy (“Agreements”). You acknowledge that you have read and understood Agreements, and agree to be bound of them.</p>
 <p>If you do not agree with (or cannot comply with) Agreements, then you may not use the Service, but please let us know by emailing at <b className="terms-heading">mellowmusicxyz@gmail.com</b> so we can try to find a solution. These Terms apply to all visitors, users and others who wish to access or use Service.</p>

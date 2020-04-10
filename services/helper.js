@@ -9,39 +9,38 @@ export const validateEmail = (email) => {
 }
 
 
-export const trackPageView = (url) => {
-  try {
-    window.gtag('config', 'UA-226459781', {
-      page_location: url
-    });
-  } catch (error) {
-    // silences the error in dev mode
-    // and/or if gtag fails to load
-  }
-}
-
-
-// export const makeid = (length) => {
-//   let id = '';
-//   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-//   const nums = '0123456789'
-//   for (let i = 0; i < 5; i++) {
-//     id += chars[Math.floor(Math.random() * chars.length) + 1]
+// export const trackPageView = (url) => {
+//   try {
+//     window.gtag('config', 'UA-226459781', {
+//       page_location: url
+//     });
+//   } catch (error) {
+//     // silences the error in dev mode
+//     // and/or if gtag fails to load
 //   }
-//   for (let i = 0; i < 6; i++) {
-//     id += nums[Math.floor(Math.random() * nums.length) + 1]
-//   }
-
-
-//   return id+Date.now();
 // }
+
+
+export const makeid = (name) => {
+  let id = '';
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const nums = '0123456789'
+  for (let i = 0; i < 5; i++) {
+    id += chars[Math.floor(Math.random() * chars.length) + 1]
+  }
+  for (let i = 0; i < 6; i++) {
+    id += nums[Math.floor(Math.random() * nums.length) + 1]
+  }
+
+  return id+Date.now()+name;
+}
 
 export const uploadImage = async (file) => {
   try{
     let response = await request
     .post(CLOUDINARY_UPLOAD_URL)
     .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-    .field('folder', 'mellowMusic')
+    .field('folder', 'logcars')
     .field('file', file)
 
     if(response.body){

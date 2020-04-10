@@ -13,9 +13,12 @@ class CustomDocument extends Document {
     // Alternatively, you could use a store, like Redux.
     const { AuthUserInfo } = this.props
     return (
-      <Html>
+      <Html lang="en-US">
         <Head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
           <link rel="shortcut icon" href="/static/favicon.ico" />
+
           <script
             id="__MY_AUTH_USER_INFO"
             type="application/json"
@@ -23,8 +26,10 @@ class CustomDocument extends Document {
               __html: JSON.stringify(AuthUserInfo, null, 2),
             }}
           />
-          <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet"></link>
-          <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet"></link>
+          <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet" disabled media="screen"></link>
+          <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet" disabled media="screen"></link>
+
+          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet" disabled media="screen"></link>
         </Head>
         <body>
           <Main />

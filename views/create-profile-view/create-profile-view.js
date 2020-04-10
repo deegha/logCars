@@ -88,8 +88,9 @@ export const CreateProfileView = ({ handleSubmit }) => {
 
 
   return (
-  <div className={"login-container"}>
+    <>
     <Header />
+  <div className={"login-container"}>
     <div className={"login-innerWrapper"}>
       <div className={"login-formContainer"} >
         <h2 className={"login-formHeader"} > Create your account</h2>
@@ -146,5 +147,6 @@ export const CreateProfileView = ({ handleSubmit }) => {
       </div>
     </div>
   </div>
+  </>
   )
 }

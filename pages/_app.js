@@ -1,19 +1,8 @@
 
 // import App from 'next/app'
 import { useState, useEffect } from "react"
-import AudioPlayer from 'react-h5-audio-player'
-import 'react-h5-audio-player/src/styles.scss'
 import "../sharedStyles/styles.scss"
 import { initGA, logPageView } from '../uitls/analatics'
-
-const Header = ({ title, image }) => {
-  return (
-    <div className={"player-header"}>
-      <img src={image} />
-      {title}
-    </div>
-  )
-}
 
 function MyApp({ Component, pageProps }) {
 
@@ -25,51 +14,25 @@ function MyApp({ Component, pageProps }) {
       }
       logPageView()
     }
+
+    window.addEventListener("resize", resize)
   })
 
-  const [playlist, setPlaylist] = useState([])
-  const [nowPlaying, setNowPlaying] = useState({
-    url: "",
-    id: "",
-    title: "",
-    image: ""
-  })
-
-  const setAndPlay =  (track) => {
-     setNowPlaying(track)
-  }
-
-  const nextSong = () => {
-    const nowPlayingIndex = playlist.findIndex(track => track.url === nowPlaying.url)
-    console.log(nowPlayingIndex, playlist.length)
-    if(nowPlayingIndex === playlist.length-1) {
-      setNowPlaying(playlist[0])
-    }else {
-      setNowPlaying(playlist[nowPlayingIndex+1])
+  const resize = () => {
+    let curIsMobile = (window.innerWidth <= 760);
+    if (curIsMobile !== isMobile) {
+      setIsMobile(curIsMobile);
     }
   }
 
-  const setList = (list) => {
-    setPlaylist(list)
-  }
+  const [isMobile, setIsMobile] = useState(false)
 
   return (
     <div style={{
       display: "flex",
       flexDirection: "column"
     }}>
-      <Component {...pageProps} setAndPlay={setAndPlay} nowPlaying={nowPlaying} setPlaylist={(setList)} />
-      {nowPlaying.url !== "" && (
-         <div className={"player"}>
-
-          <AudioPlayer
-            autoPlayAfterSrcChange={true}
-            onEnded={nextSong}
-            layout={"horizontal-reverse"}
-            header={<Header title={nowPlaying.title} image={nowPlaying.image} />}
-            src={nowPlaying.url} autoPlay />
-        </div>
-      )}
+      <Component {...pageProps} />
     </div>
   )
 }
