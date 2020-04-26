@@ -15,7 +15,7 @@ class CustomDocument extends Document {
     return (
       <Html lang="en-US">
         <Head>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
           <link rel="shortcut icon" href="/static/favicon.ico" />
 
@@ -28,8 +28,9 @@ class CustomDocument extends Document {
           />
           <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet" disabled media="screen"></link>
           <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet" disabled media="screen"></link>
-
+          <link href="https://fonts.googleapis.com/css?family=Manrope&display=swap" rel="stylesheet" disabled media="screen"></link>
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet" disabled media="screen"></link>
+
         </Head>
         <body>
           <Main />

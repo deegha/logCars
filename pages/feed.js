@@ -1,11 +1,7 @@
 import firebase  from "firebase"
 import { FeedView } from "../views/Feed-view/Feed-view"
 
-
-
 const Feed = ({ feed }) => {
-
-  console.log(feed)
   return (
     <FeedView vehicle={feed} />
   )

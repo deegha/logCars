@@ -10,9 +10,6 @@ export const FeedView = ({vehicle, id}) => {
 
   const [showNumber, toggleNumber] = useState(false)
   const toggle = () => toggleNumber(!showNumber)
-
-  console.log(vehicle.createdAt.seconds)
-
   return (
     <div className="feed-view">
       <Header
@@ -78,6 +75,7 @@ export const FeedView = ({vehicle, id}) => {
               <h3 className="feed-view__details-item feed-view__details-header">Mileage</h3>
               <span>{numeral(vehicle.mileage ).format('0,0')} KM</span>
             </div>
+
             <div className="feed-view__details-item">
               <h3 className="feed-view__details-item feed-view__details-header">Fuel</h3>
               <span>{vehicle.fuelType}</span>

@@ -3,6 +3,18 @@
 import { useState, useEffect } from "react"
 import "../sharedStyles/styles.scss"
 import { initGA, logPageView } from '../uitls/analatics'
+import AppContextProvider from "../context/app-context"
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
+
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.TOP_RIGHT,
+  timeout: 5000,
+  offset: '30px',
+  // you can also just use 'scale'
+  transition: transitions.SCALE
+}
 
 function MyApp({ Component, pageProps }) {
 
@@ -16,6 +28,8 @@ function MyApp({ Component, pageProps }) {
     }
 
     window.addEventListener("resize", resize)
+
+
   })
 
   const resize = () => {
@@ -28,12 +42,16 @@ function MyApp({ Component, pageProps }) {
   const [isMobile, setIsMobile] = useState(false)
 
   return (
+    <AppContextProvider>
     <div style={{
       display: "flex",
       flexDirection: "column"
     }}>
+      <AlertProvider template={AlertTemplate} {...options}>
       <Component {...pageProps} />
+      </AlertProvider>
     </div>
+    </AppContextProvider>
   )
 }
 

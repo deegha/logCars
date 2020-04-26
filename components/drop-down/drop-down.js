@@ -1,9 +1,15 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
 import "./styles.scss"
 
 export const DropDown = ({ list, select, selected, placeHolder, sreachContext, name }) => {
+
+  useEffect(() => {
+    if(selected) {
+      toggleList()
+    }
+  }, [selected])
 
   const [ listOpen,  setListToggle] = useState(true)
 
@@ -12,7 +18,7 @@ export const DropDown = ({ list, select, selected, placeHolder, sreachContext, n
   }
 
   const selectItem = (name, item) => ()=>  {
-    toggleList()
+    // toggleList()
     select(name, item)
   }
 

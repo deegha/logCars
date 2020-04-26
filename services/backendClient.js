@@ -38,6 +38,14 @@ export const listFeeds = async ({searchText = "", filters , page}) => {
       filterArray = [...filterArray, {key: 'fuelType', value: filters.fuelType, glue: ':'}]
     }
 
+    if(filters.modelYeaMin) {
+      filterArray = [...filterArray, {key: 'modelYear', value: filters.modelYeaMin-1, glue: '>'}]
+    }
+
+    if(filters.modelYearMax) {
+      filterArray = [...filterArray, {key: 'modelYear', value: filters.modelYearMax+1, glue: '<'}]
+    }
+
 
 
     filterArray.map((filter ) => {

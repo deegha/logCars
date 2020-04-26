@@ -1,15 +1,16 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { cars, transmissionArr, fuelTypeArr } from "../../../../services/data"
 import { DropDown } from "../../../../components"
+import { AppContext } from "../../../../context/app-context"
+import { useAlert, types } from 'react-alert'
+
 import "./styles.scss"
 
-export const Filter = ( { items, setFilterItem, setFilters, filters, clearSelectedMake, clearSelected }) => {
-  const [text, setText ] = useState({
-    priceMin: "",
-    priceMax: "",
-    modelYeaMin: "",
-    modelYearMax: "",
-  })
+export const Filter = ( { setFilterItem}) => {
+
+  const { filterItems, setFilterItems, setFilters, filters } = useContext(AppContext)
+  const alert = useAlert()
+
   let models = []
 
   if(filters.make && filters.make !== "")
@@ -17,12 +18,28 @@ export const Filter = ( { items, setFilterItem, setFilters, filters, clearSelect
 
   const onChangeText = (e) => {
     if(e.target.name === "priceMin" && isNaN(e.target.value) || e.target.name === "priceMax" && isNaN(e.target.value) ) {
-      console.log("not a number")
+
+      alert.show(e.target.name === "priceMin"?`Minimum price should be a number`: `Maximum price should be a number`, {
+        timeout: 3000,
+        type: types.ERROR,
+      })
+
       return
     }
-    setText({
-      ...text,
+
+    let change = {
       [e.target.name]: e.target.value
+    }
+
+    if(e.target.name === "priceMin") {
+      change ={
+        ...change,
+      }
+    }
+
+    setFilterItems({
+      ...filterItems,
+      ...change
     })
   }
 
@@ -30,10 +47,11 @@ export const Filter = ( { items, setFilterItem, setFilters, filters, clearSelect
     e.preventDefault()
 
     setFilters({
-      priceMin: text.priceMin,
-      priceMax: text.priceMax,
-      modelYeaMin: text.modelYeaMin,
-      modelYearMax: text.modelYearMax,
+      ...filters,
+      priceMin: filterItems.priceMin,
+      priceMax: filterItems.priceMax,
+      modelYeaMin: filterItems.modelYeaMin,
+      modelYearMax: filterItems.modelYearMax,
     })
   }
 
@@ -41,11 +59,19 @@ export const Filter = ( { items, setFilterItem, setFilters, filters, clearSelect
     <div className="filter-container">
       <form className="filter-form" onSubmit={filter}>
         <div className="filter-item">
-          <input className="filter-item-text-field" name="priceMin" placeholder={"Min Price"} onChange={onChangeText} value={text.priceMin} />
+          <input className="filter-item-text-field" name="priceMin" placeholder={"Min Price"} onChange={onChangeText} value={filterItems.priceMin} />
         </div>
 
         <div className="filter-item">
-          <input className="filter-item-text-field" name="priceMax" placeholder={"Max Price"} onChange={onChangeText} value={text.priceMax} />
+          <input className="filter-item-text-field" name="priceMax" placeholder={"Max Price"} onChange={onChangeText} value={filterItems.priceMax} />
+        </div>
+
+        <div className="filter-item">
+          <input className="filter-item-text-field" name="modelYeaMin" placeholder={"Min Year"} onChange={onChangeText} value={filterItems.modelYeaMin} />
+        </div>
+
+        <div className="filter-item">
+          <input className="filter-item-text-field" name="modelYearMax" placeholder={"Max Year"} onChange={onChangeText} value={filterItems.modelYearMax} />
         </div>
 
         <div className="filter-item">
@@ -70,8 +96,6 @@ export const Filter = ( { items, setFilterItem, setFilters, filters, clearSelect
       <div className="filter-item">
         <DropDown list={fuelTypeArr} placeHolder={"Fuel"} sreachContext={'type'} name={"fuelType"}  select={setFilterItem} selected={filters.fuelType !== "" && filters.fuelType} />
       </div>
-
-
     </div>
   )
 }

@@ -1,21 +1,57 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import "./styles.scss"
 import LazyLoad from "react-lazyload"
+import Lottie from 'react-lottie'
+import loadinganimation from "../../../../static/image-loading.json"
+
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 String.prototype.insert = function (index, string) {
   if (index > 0)
     return this.substring(0, index) + string + this.substring(index, this.length);
 
   return string + this;
-};
+}
 
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: loadinganimation,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice'
+  }
+}
 
 export const ImageSlider = ({ images }) => {
   const [ activeImage, setActive ] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const counter = useRef(0);
+
+  const imageLoaded = () => { console.log("loaded")
+    setLoading(false);
+  }
 
   return (
     <div className="image-slider">
-      <div className="image-slider__image" style={{backgroundImage: `url(${images[activeImage].url.insert(50, "w_550,h_400,c_fill,f_auto,q_auto/")})`}} />
+      <div className="image-slider__image">
+        <div style={{display: loading ? "flex" : "none"}} className="image-slider__image--loading">
+          <Lottie
+            options={defaultOptions}
+            height={100}
+            width={200}/>
+        </div>
+        <img style={{display: !loading ? "block" : "none"}} src={images[activeImage].url.insert(50, "w_550,h_400,c_fill,f_auto,q_auto/")} onLoad={imageLoaded} />
+      </div>
+{/*
+        {images.map(image => (
+           <Carousel>
+            <div>
+              <img style={{display: !loading ? "block" : "none"}} src={images[activeImage].url.insert(50, "w_550,h_400,c_fill,f_auto,q_auto/")} onLoad={imageLoaded} />
+            </div>
+           </Carousel>
+        ))} */}
+
       <div  className="image-slider__select-image">
         {images.map((image, i) => {
 

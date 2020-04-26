@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState,useContext } from "react"
 import Link from "next/link"
 import css from "./styles.scss"
 import logout from "../../services/logOut"
@@ -6,6 +6,7 @@ import Head  from "../head/head"
 import withAuth from "../../services/withAuth"
 import searchicon from "../../static/search.png"
 import { APP_LOG } from "../../config/config"
+import { AppContext } from "../../context/app-context"
 
 String.prototype.insert = function (index, string) {
   if (index > 0)
@@ -14,13 +15,10 @@ String.prototype.insert = function (index, string) {
   return string + this;
 }
 
-const Header = ({ authUser, page, title, description, keywords, url, ogImage, search, setSearchText, loading }) => {
-  const [mobileMenu, toggleMobileMenu] = useState(false)
-  const inputEl = useRef(null)
+const Header = ({ authUser, title, description, keywords, url, ogImage, search, loading }) => {
 
-  useEffect(() => {
-      inputEl.current.focus()
-  }, [])
+  const [mobileMenu, toggleMobileMenu] = useState(false)
+  const { isLandingPage, setLandingPage, page, setPage,filters, setFilters, searchText, setSearchText,items, setItems } = useContext(AppContext)
 
   const onClick = () => {
     logout()
@@ -58,12 +56,13 @@ const Header = ({ authUser, page, title, description, keywords, url, ogImage, se
         <div className={"header-search-form-item"}>
           <img src={searchicon} />
           <input
-            ref={inputEl}
+
             autoComplete="off"
             className={"header-search-box"}
             type="text"
             id="searchText"
             name="searchText"
+            value={searchText}
             placeholder="Search your vehicle "
             onChange={(e) => setSearchText(e.target.value)}
           />
