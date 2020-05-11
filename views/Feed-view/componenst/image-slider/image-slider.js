@@ -3,9 +3,7 @@ import "./styles.scss"
 import LazyLoad from "react-lazyload"
 import Lottie from 'react-lottie'
 import loadinganimation from "../../../../static/image-loading.json"
-
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import default_car from "../../../../static/default_car.jpg"
 
 String.prototype.insert = function (index, string) {
   if (index > 0)
@@ -28,7 +26,7 @@ export const ImageSlider = ({ images }) => {
   const [loading, setLoading] = useState(true)
   const counter = useRef(0);
 
-  const imageLoaded = () => { console.log("loaded")
+  const imageLoaded = () => {
     setLoading(false);
   }
 
@@ -41,7 +39,11 @@ export const ImageSlider = ({ images }) => {
             height={100}
             width={200}/>
         </div>
-        <img style={{display: !loading ? "block" : "none"}} src={images[activeImage].url.insert(50, "w_550,h_400,c_fill,f_auto,q_auto/")} onLoad={imageLoaded} />
+       {images.length > 0 ? (
+         <img style={{display: !loading ? "block" : "none"}} src={images[activeImage].url.insert(50, "w_550,h_400,c_fill,f_auto,q_auto/")} onLoad={imageLoaded} />
+       ) : (
+        <img style={{display: !loading ? "block" : "none"}} src={default_car} onLoad={imageLoaded} />
+       )}
       </div>
 {/*
         {images.map(image => (

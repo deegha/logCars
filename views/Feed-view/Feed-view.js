@@ -5,6 +5,7 @@ import { useState } from "react"
 import { APP_BASE_URL } from "../../config/config"
 import { ImageSlider } from "./componenst/image-slider/image-slider"
 import moment from "moment"
+import default_car from "../../static/default_car.jpg"
 
 export const FeedView = ({vehicle, id}) => {
 
@@ -15,7 +16,7 @@ export const FeedView = ({vehicle, id}) => {
       <Header
       keywords={`${vehicle.make} ${vehicle.model}`}
       title={`carlogs | ${vehicle.title}`}
-      ogImage={vehicle.images[0].url}
+      ogImage={vehicle.images.length >0?vehicle.images[0].url: default_car}
       url={`${APP_BASE_URL}/feed?vehicle=${id}`}
       description={vehicle.title} />
 

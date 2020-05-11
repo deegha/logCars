@@ -8,11 +8,13 @@ export const API_KEY = "b803736adee9683a2cbc34107fe7c7ad"
 
 
 export const APP_NAME = "carlogs.lk"
-export const APP_LOG =  "https://res.cloudinary.com/duqpgdc9v/image/upload/v1565778293/logcars/logo.png"
-export const APP_DESCRIPTION = `The car search engine`
-export const APP_BASE_URL = 'https://car-logs.now.sh'
+export const APP_LOG =  "https://res.cloudinary.com/duqpgdc9v/image/upload/w_200,q_auto/v1587910037/logcars/logo-carlogs.png"
+export const APP_DESCRIPTION = `Srilanka's best market place for buying selling cars. Find your dream car with technology today`
+export const APP_BASE_URL = 'https://carlogs.lk/'
 
 export const API_BASE_URL = 'http://localhost:5001/car-site-c53db/us-central1/'
+
+
 
 export const CLOUDINARY_UPLOAD_PRESET = 'x8pebuvf'
 export const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/duqpgdc9v/upload'

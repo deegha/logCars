@@ -3,6 +3,7 @@ import  "./styles.scss"
 import Link from 'next/link'
 import LazyLoad from "react-lazyload"
 import numeral from "numeral"
+import default_car from "../../static/default_car.jpg"
 
 String.prototype.insert = function (index, string) {
   if (index > 0)

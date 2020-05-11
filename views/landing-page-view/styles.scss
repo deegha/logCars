@@ -22,12 +22,13 @@ body {
   -moz-background-size: cover;
 
   .landing-page__heading {
-    font-size: 60px;
+    margin-top: -100px;
+    font-size: 35px;
     h1 {
       color: #ffffff;
       font-family: 'Manrope', sans-serif;
       font-weight: 100;
-      background: rgba(0,0,0, 0.7);
+      background: rgba(17,23,31, 0.4);
       padding: 10px;
 
     }
@@ -39,7 +40,7 @@ body {
   background: rgba(10,10,10, 0.8);
   width: 50%;
   padding: 40px;
-  height: 250px;
+  height: 200px;
   border-radius: 5px;
   .landing-page__search-form {
     display: flex;
@@ -49,7 +50,7 @@ body {
   .landing-page__search-box {
     background-color: #ffffff;
     width: 100%;
-    padding: 5px;
+    padding: 2px;
 
     border-radius: 2px;
     border: none;
@@ -63,7 +64,7 @@ body {
       outline: none;
       border: 0;
       padding: 10px;
-      font-size: 25px;
+      font-size: 22px;
       font-family: 'Manrope', sans-serif;
     }
 
@@ -85,9 +86,9 @@ body {
     border-radius: 2px;
     color: #fff;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 20px;
     width: 29%;
-    height: 60px;
+    height: 50px;
     font-family: 'Manrope', sans-serif;
     letter-spacing: 1.1px;;
   }
@@ -102,13 +103,28 @@ body {
   margin-top: 20px;
 }
 
-.landing-page__car-cat {
-  width: 100px;
+.landing-page__sell-btn {
+  margin-top: 20px;
+  background-color: #d35400;
+  width: 50%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  border-radius: 5px;
   cursor: pointer;
 
-  // &:hover {
-  //   width: 121px;
-  // }
+  h2 {
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Manrope', sans-serif;
+  }
+}
+
+.landing-page__car-cat {
+  width: 80px;
+  cursor: pointer;
 }
 
 .landing-page__footer {
@@ -120,7 +136,6 @@ body {
 }
 
 
-
 @media only screen and (max-width: 800px) {
   .landing-page  {
     -webkit-background-size: cover;
@@ -130,6 +145,7 @@ body {
 
     .landing-page__heading {
       font-size: 30px;
+      margin-top: -130px;
     }
   }
 
@@ -144,15 +160,16 @@ body {
       width: 90%;
 
       input {
-        font-size: 17;
+        font-size: 17px;
         padding: 2px;
       }
     }
 
     .landing-page__search-button {
-      width: 96%;
-      height: 45px;
+      width: 92%;
+      height: 40px;
       margin-top: 14px;
+      font-size: 17px;
     }
   }
 
@@ -172,4 +189,23 @@ body {
     margin-top: 20px;
   }
 
+  .landing-page__sell-btn {
+    margin-top: 20px;
+    background-color: #d35400;
+    width: 90%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    h2 {
+      font-size: 17px;
+      color: #fff;
+      font-weight: 500;
+      font-family: 'Manrope', sans-serif;
+    }
+  }
 }

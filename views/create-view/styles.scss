@@ -19,7 +19,9 @@
       background-color: #f6e58d;
       font-weight: 700;
       letter-spacing: 1.2px;
+      padding: 0 10px;
     }
+
     .upload-formItem {
       display: flex;
       align-items: center;
@@ -151,6 +153,40 @@
   }
 }
 
+.create-view__tips {
+  padding: 10px;
+
+  h2 {
+    font-family: 'Spartan', sans-serif;
+    color: #57606f;
+    letter-spacing: 0.6px;
+    font-size: 17px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0 15px;
+    li {
+      color: #a4b0be;
+      margin:15px;
+      line-height: 25px;
+      letter-spacing: 0.6px;
+      font-size: 15px;
+    }
+  }
+}
+
+.upload-form--loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 300px;
+
+  h2 {
+    margin-bottom: 40px;
+  }
+}
 
 .upload-loading {
   width: 9px;
@@ -176,9 +212,18 @@
 
 @media only screen and (max-width: 600px) {
 
+  .upload-form--loading {
+    font-size: 11px;
+  }
+
+
   .upload-container {
     .upload-formWrapper {
       width: 100%;
+
+      .upload-formItem-subheading {
+        font-size: 12px;
+      }
 
       h1 {
         font-size: 18px;
@@ -188,6 +233,8 @@
         .upload-textInput, .upload-textArea {
           font-size: 17px;
         }
+
+
       }
     }
   }

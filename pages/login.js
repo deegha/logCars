@@ -1,15 +1,24 @@
-import { useEffect } from "react"
+import { useEffect, useContext } from "react"
 import { LoginView } from "../views/login-view/login-View"
 import firebase from "firebase/app"
 import Router from "next/router"
+import { AppContext } from "../context/app-context"
 
-import withAuth  from "../services/withAuth"
+import withAuth from "../services/withAuth"
 
 function Login({ authUser }) {
-console.log(authUser)
+  const { nextPage } = useContext(AppContext)
+
   useEffect(() => {
-    if(authUser !== false && authUser !== "loading")
-      Router.push("/")
+    if (authUser !== false && authUser !== "loading") {
+      if (nextPage !== "")
+        Router.push(`/${nextPage}`)
+
+      else
+        Router.push("/")
+    }
+
+
   }, [authUser])
 
   const handleSubmit = async (email, password) => {
@@ -17,7 +26,7 @@ console.log(authUser)
   };
 
   return (
-   <LoginView handleSubmit={handleSubmit} />
+    <LoginView handleSubmit={handleSubmit} />
   );
 }
 

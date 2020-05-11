@@ -5,16 +5,15 @@
   align-items: center;
   width: 100%;
   position: fixed;
-  background-color: #2b343b;
+  background-color: #37434B;
   z-index: 100;
-  opacity: 0.98;
   box-shadow: #cccccc 5px 5px 14px 0px;
   color: #ffffff;
 
 
   .header-search-form-item {
     width: 600px;
-    border-radius: 5px;
+    border-radius: 2px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -67,6 +66,7 @@
       width: 60px;
       max-height: 40px;
       margin-right: 5px;
+      margin-left: 30px;
       img {
         width: 60px;
         max-height: 40px;
@@ -102,8 +102,7 @@
           text-decoration: none;
           color: #ffffff;
 
-          border-radius: 20px;
-          padding: 7px 0px;
+
           font-size: 12px;
           font-weight: 400;
           cursor: pointer;
@@ -154,7 +153,11 @@ body {
   margin: 0;
 }
 
-
+.sell-car {
+  background-color: #d35400;
+  border-radius: 2px;
+  padding: 5px;
+}
 
 @media only screen and (max-width: 600px) {
 
@@ -213,6 +216,9 @@ body {
     }
 
     .header-sitelogo {
+      .header-siteimage {
+        margin-left: 0;
+      }
       .site-name {
         display: none;
       }

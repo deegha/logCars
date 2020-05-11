@@ -9,7 +9,12 @@ const Home = ({ setAndPlay, nowPlaying }) => {
 
   const [nbPages, setNbPages] = useState(0)
   const [loading, setLoading] = useState(false)
-  const { isLandingPage, setLandingPage, page, setPage,filters, setFilters, searchText, setSearchText,items, setItems } = useContext(AppContext)
+  const {
+    isLandingPage,
+    setLandingPage,
+    page,
+    setPage,
+    filters, setFilters, searchText, setSearchText, items, setItems } = useContext(AppContext)
   const [fetchingItems, setFetchingItems] = useState(true)
 
   useEffect(() => {
@@ -20,7 +25,7 @@ const Home = ({ setAndPlay, nowPlaying }) => {
     let change = {
       [name]: item
     }
-    if(name === "make") {
+    if (name === "make") {
       change = {
         ...change,
         model: ""
@@ -31,11 +36,12 @@ const Home = ({ setAndPlay, nowPlaying }) => {
       ...change
     })
 
-    if(isLandingPage)
+    if (isLandingPage)
       setLandingPage(false)
   }
 
-  const setAllFilters = (newFilters) => { console.log(newFilters, "newFilters")
+  const setAllFilters = (newFilters) => {
+    console.log(newFilters, "newFilters")
     setFilters({
       ...filters,
       ...newFilters
@@ -45,11 +51,11 @@ const Home = ({ setAndPlay, nowPlaying }) => {
   const search = async (e) => {
     e.preventDefault()
     getItems(0)
-    if(isLandingPage)
+    if (isLandingPage)
       setLandingPage(false)
   }
 
-  const getItems = async(page) => {
+  const getItems = async (page) => {
     setFetchingItems(true)
     const data = {
       searchText,
@@ -73,15 +79,15 @@ const Home = ({ setAndPlay, nowPlaying }) => {
     return result
   }
 
-  const hasMore = nbPages > page+1
+  const hasMore = nbPages > page + 1
 
-  if(isLandingPage)
-   return (
-    <LandingPageView
-      search={search}
-      setSearchText={setSearchText}
-      setAllFilters={setFilterItem} />
-   )
+  if (isLandingPage)
+    return (
+      <LandingPageView
+        search={search}
+        setSearchText={setSearchText}
+        setAllFilters={setFilterItem} />
+    )
 
   return (
     <HomePage
@@ -96,7 +102,7 @@ const Home = ({ setAndPlay, nowPlaying }) => {
       nbPages={nbPages}
       items={items}
       setAndPlay={setAndPlay}
-      loading={loading && page== 0}
+      loading={loading && page == 0}
       nowPlaying={nowPlaying}
       loadingMore={loading && hasMore && page != 0} />
   )

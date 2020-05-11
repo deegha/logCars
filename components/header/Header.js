@@ -76,7 +76,7 @@ const Header = ({ authUser, title, description, keywords, url, ogImage, search, 
         <ul>
           <li>
             <Link href={"/create"}>
-              <a className="text-xs">Sell your car</a>
+              <a className="sell-car">Sell your car</a>
             </Link>
           </li>
           <li>
