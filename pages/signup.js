@@ -13,8 +13,6 @@ const CreateProfile = ({authUser}) => {
       Router.push("/")
   }, [authUser])
 
-
-
   const handleSubmit = async (inputs) => {
     try {
       await firebase.auth().createUserWithEmailAndPassword(inputs.email, inputs.password);

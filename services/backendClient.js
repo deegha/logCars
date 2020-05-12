@@ -1,7 +1,6 @@
 import * as algoliasearch from 'algoliasearch'
 import { APPLICATION_ID, API_KEY } from "../config/config"
 
-
 export const listFeeds = async ({searchText = "", filters , page}) => {
 
   const TRACKS_INDEX = "feeds"

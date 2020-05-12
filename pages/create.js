@@ -42,6 +42,7 @@ const Create = ({authUser}) => {
         createdAt: new Date(),
         timeStamp: moment().unix(),
         status: "ACTIVE",
+        authorId:  authUser.uid,
         author: {
           displayName: authUser.displayName,
           email: authUser.email,

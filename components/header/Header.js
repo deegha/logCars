@@ -91,13 +91,18 @@ const Header = ({ authUser, title, description, keywords, url, ogImage, search, 
           )}
           <li>
             {authUser? (
+                <Link href={"/profile"}>
+                <a>
               <div className={"header-user"}>
+
                 <p>Hey {authUser.displayName}!</p>
                 <div className={"header-userImage"}>
                   {authUser.photoURL && (<div className={"img"} style={{backgroundImage: `url(${authUser.photoURL})`}} />)}
                 </div>
 
               </div>
+              </a>
+                </Link>
             ):(
               <Link href={"/login"}>
               <a className="text-xs">Login</a>

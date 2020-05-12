@@ -1,0 +1,23 @@
+.profile__wrapper {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__wrapper-inner {
+  width: 90%;
+}
+
+.profile__delete-btn {
+  background-color:#e74c3c;
+  padding: 5px 10px;
+  border-radius: 2px;
+  color: #ffffff;
+  max-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
