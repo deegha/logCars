@@ -6,7 +6,7 @@ import { useAlert, types } from 'react-alert'
 
 import "./styles.scss"
 
-export const Filter = ( { setFilterItem}) => {
+export const Filter = ( { setFilterItem, setShowFilters }) => {
 
   const { filterItems, setFilterItems, setFilters, filters } = useContext(AppContext)
   const alert = useAlert()
@@ -44,6 +44,7 @@ export const Filter = ( { setFilterItem}) => {
   }
 
   const filter = (e) => {
+    setShowFilters(false)
     e.preventDefault()
 
     setFilters({

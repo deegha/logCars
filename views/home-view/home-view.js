@@ -4,12 +4,24 @@ import { Filter } from "./components/filter/filter"
 import "./styles.scss"
 import Lottie from 'react-lottie'
 import loadinganimation from "../../static/preloader.json"
+import noRecords from "../../static/no-records.json"
+
+import { BsFilter } from "react-icons/bs"
 
 
 const defaultOptions = {
   loop: true,
   autoplay: true,
   animationData: loadinganimation,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice'
+  }
+}
+
+const noRecordsOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: noRecords,
   rendererSettings: {
     preserveAspectRatio: 'xMidYMid slice'
   }
@@ -50,10 +62,14 @@ export const HomePage = ({
       <Header  authUser={authUser} page={"Home"} title={`Home | ${pageTitle}`} search={search} loading={loading} />
       <div className={"home-container"} >
         <div className={`home-innerWrapper-filter ${showFilter && "home-innerWrapper-filter--show"}`}>
-          <Filter filters={filters} setFilterItem={setFilterItem} setFilters={setFilters}/>
+          <Filter filters={filters} setFilterItem={setFilterItem} setFilters={setFilters} setShowFilters={setShowFilters} />
         </div>
         <div className={"home-innerWrapper"}>
-          <div className="home-show-filters" onClick={() => setShowFilters(!showFilter)} >{showFilter?"Close filter":"Show filter"}</div>
+          <div className="home-show-filters" onClick={() => setShowFilters(!showFilter)} >
+            <BsFilter size={"52"} color="#e84118" />
+          </div>
+
+
 
           {!fetchingItems && items.map( (item, index) => {
             const track = item
@@ -69,6 +85,17 @@ export const HomePage = ({
                 height={100}
                 width={200}/>
            </div>
+          )}
+
+          {!fetchingItems && items.length < 1 && (
+            <div className={"home-loading"}>
+              <Lottie
+                options={noRecordsOptions}
+                height={100}
+                width={100}/>
+
+              <h2 className={"home-no-records"}>No records found</h2>
+            </div>
           )}
 
           {!fetchingItems && (

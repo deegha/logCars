@@ -26,10 +26,7 @@ class CustomDocument extends Document {
               __html: JSON.stringify(AuthUserInfo, null, 2),
             }}
           />
-          <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet" disabled media="screen"></link>
-          <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet" disabled media="screen"></link>
-          <link href="https://fonts.googleapis.com/css?family=Manrope&display=swap" rel="stylesheet" disabled media="screen"></link>
-          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet" disabled media="screen"></link>
+          <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"  media="screen"></link>
 
         </Head>
         <body>
