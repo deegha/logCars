@@ -6,6 +6,8 @@ import { APP_BASE_URL } from "../../config/config"
 import { ImageSlider } from "./componenst/image-slider/image-slider"
 import moment from "moment"
 import default_car from "../../static/default_car.jpg"
+import { IoIosArrowRoundBack } from "react-icons/io"
+import Link from 'next/link'
 
 export const FeedView = ({vehicle, id}) => {
 
@@ -23,6 +25,11 @@ export const FeedView = ({vehicle, id}) => {
       <div className="feed-view_wrapper">
         <div className="feed-view__row">
           <div className="feed-view__header-section">
+            <Link href="/" >
+              <a>
+              <IoIosArrowRoundBack size={50} className="feed-view__back-btn" />
+              </a>
+            </Link>
             <h1>{vehicle.title}</h1>
             <p>{moment.unix(vehicle.createdAt.seconds).fromNow()}</p>
           </div>
@@ -49,6 +56,10 @@ export const FeedView = ({vehicle, id}) => {
 
           <div className="feed-view__right">
           <div className="feed-view__details">
+            <div className="feed-view__details-item">
+              <h2 className="feed-view__details-item feed-view__details-header">Price</h2>
+              <span>Rs {numeral(vehicle.price).format('0,0')}</span>
+            </div>
             <div className="feed-view__details-item">
               <div className="feed-view__details-number-toggle" onClick={toggle}>{showNumber?vehicle.phoneNumber :"Show Phone number"}</div>
             </div>
