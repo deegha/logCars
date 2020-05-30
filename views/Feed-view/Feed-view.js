@@ -33,7 +33,7 @@ export const FeedView = ({vehicle, id}) => {
             <h1>{vehicle.title}</h1>
             <p>{moment.unix(vehicle.createdAt.seconds).fromNow()}</p>
           </div>
-          <div className="feed-view__header-section">
+          <div className="feed-view__header-section feed-view-price">
             <h2>Rs {numeral(vehicle.price).format('0,0')}</h2>
             <p>{numeral(vehicle.price).format('0.00 a')}</p>
           </div>

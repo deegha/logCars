@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Header, Loader, Card, Footer, Player} from "../../components"
+import { Header, Loader, Card, Footer} from "../../components"
 import { Filter } from "./components/filter/filter"
 import "./styles.scss"
 import Lottie from 'react-lottie'
@@ -105,6 +105,7 @@ export const HomePage = ({
           )}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

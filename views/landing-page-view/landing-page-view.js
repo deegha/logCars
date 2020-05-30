@@ -23,10 +23,10 @@ export const LandingPageView = ({setSearchText, search, setAllFilters}) => {
   useEffect(() => {
     inputEl.current.focus()
 
-    alert.show("Hey there! thank you for joining us with the Beta test.", {
-      timeout: 9000,
-      type: types.INFO,
-    })
+    // alert.show("Hey there! thank you for joining us with the Beta test.", {
+    //   timeout: 9000,
+    //   type: types.INFO,
+    // })
   }, [])
 
   const navigateToLogin = () => {
@@ -71,7 +71,7 @@ export const LandingPageView = ({setSearchText, search, setAllFilters}) => {
       </div>
 
         <div className="landing-page__sell-btn" onClick={navigateToLogin} >
-          <h2>Sell your car for free</h2>
+          <h2>Sell your car</h2>
       </div>
 
     </div>

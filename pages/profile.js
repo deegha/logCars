@@ -11,15 +11,18 @@ const Profile = ({query, authUser}) => {
   useEffect(() => {
     if(authUser === false)
       Router.push("/login")
+
+    if(authUser.uid)
+      fetchFeeds()
   }, [authUser])
 
-  useEffect(() => {
-    fetchFeeds()
-  }, [])
+  // useEffect(() => {
+
+  // }, [])
 
   const fetchFeeds = async () => {
     const db =  firebase.firestore()
-    const ref = await db.collection("feeds").where("authorId", "==", "8vPBiljvSda2PikSuCSIZyF7RIo1")
+    const ref = await db.collection("feeds").where("authorId", "==", authUser.uid)
     const response = await ref.get()
 
     const arr = []
@@ -49,6 +52,7 @@ const Profile = ({query, authUser}) => {
   return (
     <ProfileView
       items={items}
+      authUser={authUser}
       deletefromDatabase={deletefromDatabase}/>
   )
 }

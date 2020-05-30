@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Header, DropDown } from "../../components"
 import { cars, transmissionArr, fuelTypeArr, conditionArr, locations } from "../../services/data"
 import "./styles.scss"
 import loadingGif from "../../static/relax-and-chill.json"
 import Lottie from 'react-lottie'
 import { useAlert, types } from 'react-alert'
+// import CKEditor from '@ckeditor/ckeditor5-react';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const defaultOptions = {
   loop: true,
@@ -44,12 +46,12 @@ const stepDetail = [
     tips: null
   },
   {
-    heading: "Attractive title and aprice",
-    subHeading: "A good ad title include name and the model of the vehicle",
+    heading: "Attractive title and a price",
+    subHeading: "A good advertisement title include name and the model of the vehicle",
     tips: null
   },
   {
-    heading: "Review Your Add",
+    heading: "Review Your Advertisement",
     subHeading: "Does this sounds cool?",
     tips: null
   },
@@ -84,6 +86,23 @@ export const CreateView = ({ creatFeed }) => {
   const [step, setStep] = useState(0)
   const [inputs, setInputs] = useState(initialInputs)
   const [loading, setLoading] = useState(false)
+
+  const editorRef = useRef()
+  const [editorLoaded, setEditorLoaded] = useState(false)
+  const { CKEditor, ClassicEditor } = editorRef.current || {}
+
+  useEffect(() => {
+    editorRef.current = {
+      CKEditor: require('@ckeditor/ckeditor5-react'),
+      ClassicEditor: require('@ckeditor/ckeditor5-build-classic')
+    }
+
+
+    setEditorLoaded(true)
+
+  }, [])
+
+
   const alert = useAlert()
 
 
@@ -207,6 +226,15 @@ export const CreateView = ({ creatFeed }) => {
     )
   }
 
+  const textEditorChage = (event, editor) => {
+    const data = editor.getData()
+
+    setInputs({
+      ...inputs,
+      "description": data
+    })
+  }
+
   const goBack = () => {
     if(step > 0) {
       setStep(step-1)
@@ -219,13 +247,16 @@ export const CreateView = ({ creatFeed }) => {
   if(inputs.make && inputs.make !== "")
     models = cars.filter(item => item.make === inputs.make)[0].models
 
+
+  console.log(inputs.description)
+
   return (
     <div className={"upload-container"}>
       <Header />
       <div className={"upload-formWrapper"}>
       {loading ? (
         <div className="upload-form--loading">
-          <h2>Your add is creating. Please wait</h2>
+          <h2>Your advertisement is creating. Please wait</h2>
           <Lottie
             options={defaultOptions}
             height={100}
@@ -343,8 +374,27 @@ export const CreateView = ({ creatFeed }) => {
                 <span>Is price negotiable?</span><input checked={inputs.negotiable} type="checkbox" onChange={checkBoxUpdate} />
               </div>
 
+              <div className={"upload-formItem upload-formItem-subheading"}>
+                <p>Make sure to write a rocking description :D</p>
+              </div>
               <div className={`upload-formItem`}>
-                <textarea placeholder="Description" name="description" onChange={textChage} className="upload-textArea"/>
+              {
+                editorLoaded ? (
+                  <div style={{width: "100%"}}>
+                  <CKEditor
+                    editor={ClassicEditor}
+                    onInit={editor => {
+                      // You can store the "editor" and use when it is needed.
+
+                      console.log('Editor is ready to use!')
+                    }}
+                    onChange={textEditorChage}
+                  />
+                  </div>
+                ) : (
+                  <div>Editor loading</div>
+                )
+              }
               </div>
             </div>
 

@@ -20,6 +20,9 @@
       padding: 10px 100px;
 
       .feed-view__header-section {
+        a {
+          color: #000000;
+        }
         h1, h2 {
           margin: 10px 0;
         }
@@ -159,4 +162,11 @@
       }
     }
   }
+}
+
+
+.feed-view-price {
+  position: relative;
+  left: -22px;
+  top: 56px;
 }

@@ -8,6 +8,10 @@
 
 .profile__wrapper-inner {
   width: 90%;
+
+  h2 {
+    color: #57606f;
+  }
 }
 
 .profile__delete-btn {
@@ -20,4 +24,16 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.profile-view__no-data {
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+
+a {
+  text-decoration:none;
+  color: #ffffff;
 }
