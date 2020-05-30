@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Header, Card } from "../../components"
+import { Header, Card, Footer } from "../../components"
 import "./styles.scss"
 import Link from "next/link"
 
@@ -59,6 +59,7 @@ export const ProfileView = ({ items, deletefromDatabase, authUser }) => {
           )}
         </div>
       </div>
+
     </div>
   )
 }

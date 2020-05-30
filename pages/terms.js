@@ -1,4 +1,4 @@
-import { Header } from "../components"
+import { Header, Footer } from "../components"
 import "../sharedStyles/styles.scss"
 
 const Terms = () => {
@@ -100,6 +100,7 @@ const Terms = () => {
 <p>Please send your feedback, comments, requests for technical support by email: <b className="terms-heading">team.carlogs@gmail.com</b>.</p>
 
     </div>
+    <Footer />
     </>
   )
 }

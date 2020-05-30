@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import { Header, DropDown } from "../../components"
+import { Header, DropDown, Footer } from "../../components"
 import { cars, transmissionArr, fuelTypeArr, conditionArr, locations } from "../../services/data"
 import "./styles.scss"
 import loadingGif from "../../static/relax-and-chill.json"
@@ -251,8 +251,10 @@ export const CreateView = ({ creatFeed }) => {
   console.log(inputs.description)
 
   return (
+    <>
+    <Header />
     <div className={"upload-container"}>
-      <Header />
+
       <div className={"upload-formWrapper"}>
       {loading ? (
         <div className="upload-form--loading">
@@ -418,5 +420,7 @@ export const CreateView = ({ creatFeed }) => {
         )}
       </div>
     </div>
+    <Footer />
+    </>
   )
 }

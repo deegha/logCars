@@ -1,6 +1,6 @@
 import "./styles.scss"
 import numeral from "numeral"
-import { Header } from "../../components"
+import { Header, Footer } from "../../components"
 import { useState } from "react"
 import { APP_BASE_URL } from "../../config/config"
 import { ImageSlider } from "./componenst/image-slider/image-slider"
@@ -14,13 +14,14 @@ export const FeedView = ({vehicle, id}) => {
   const [showNumber, toggleNumber] = useState(false)
   const toggle = () => toggleNumber(!showNumber)
   return (
-    <div className="feed-view">
-      <Header
+    <>
+     <Header
       keywords={`${vehicle.make} ${vehicle.model}`}
       title={`carlogs | ${vehicle.title}`}
       ogImage={vehicle.images.length >0?vehicle.images[0].url: default_car}
       url={`${APP_BASE_URL}/feed?vehicle=${id}`}
       description={vehicle.title} />
+    <div className="feed-view">
 
       <div className="feed-view_wrapper">
         <div className="feed-view__row">
@@ -113,6 +114,9 @@ export const FeedView = ({vehicle, id}) => {
 
         </div>
       </div>
+
     </div>
+    <Footer />
+    </>
   )
 }
