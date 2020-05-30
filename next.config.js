@@ -11,12 +11,20 @@ module.exports =  withImages(withSass(withCSS({
         fs: "empty"
       };
     }
+    config.module.rules.push(
+      {
+        test: /\.md$/,
+        use: 'raw-loader'
+      }
+    )
     return config;
   },
   devIndicators: {
     autoPrerender: false,
   },
 })));
+
+
 
 
 
