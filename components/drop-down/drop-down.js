@@ -5,17 +5,6 @@ import "./styles.scss"
 
 export const DropDown = ({ list, select, selected, placeHolder, sreachContext, name }) => {
 
-  useEffect(() => {
-    if(selected) {
-      toggleList()
-    }
-  }, [selected])
-
-  const [ listOpen,  setListToggle] = useState(true)
-
-  const toggleList = () => {
-    setListToggle(!listOpen)
-  }
 
   const selectItem = (name, item) => ()=>  {
     // toggleList()
@@ -24,7 +13,6 @@ export const DropDown = ({ list, select, selected, placeHolder, sreachContext, n
 
   const clear = (name) => {
     select(name, "")
-    setListToggle(true)
   }
 
   return (
@@ -41,7 +29,7 @@ export const DropDown = ({ list, select, selected, placeHolder, sreachContext, n
         )}
 
       </div>
-      {listOpen && (
+      {!selected && (
         <ul className={"dropDown-list"}>
         {list.map( (item, i) => (
               <li className={"dropDown-item"} onClick={selectItem(name, item[sreachContext])} key={i} >{item[sreachContext]}</li>

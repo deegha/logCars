@@ -13,9 +13,14 @@ export const Footer = () => {
           </li>
         </ul>
       </div>
-      {/* <div  className="footer__section">
+      <div  className="footer__section">
         <h2>Blog</h2>
-      </div> */}
+        <ul>
+          <li>
+            <a href="/blog?slug=ten-tips-to-buy-a-used-car-in-srilanka" target="new">How to buy car used car in srilanka</a>
+          </li>
+        </ul>
+      </div>
       <div  className="footer__section">
         <h2>About</h2>
         <ul>

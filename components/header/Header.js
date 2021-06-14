@@ -54,7 +54,10 @@ const Header = ({ authUser, title, description, keywords, url, ogImage, search, 
 
         <form onSubmit={search}>
         <div className={"header-search-form-item"}>
-          <img src={searchicon} />
+          <div className={"search-loading__wrapper"}>
+            { loading && <div className={"search-loading"} /> }
+          </div>
+
           <input
 
             autoComplete="off"
@@ -66,7 +69,7 @@ const Header = ({ authUser, title, description, keywords, url, ogImage, search, 
             placeholder="Search your vehicle "
             onChange={(e) => setSearchText(e.target.value)}
           />
-          { loading && <div className={"search-loading"} /> }
+          <img src={searchicon} onClick={search} className={"header-search-icon"}/>
           </div>
         </form>
 

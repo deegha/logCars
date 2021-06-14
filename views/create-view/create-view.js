@@ -5,8 +5,7 @@ import "./styles.scss"
 import loadingGif from "../../static/relax-and-chill.json"
 import Lottie from 'react-lottie'
 import { useAlert, types } from 'react-alert'
-// import CKEditor from '@ckeditor/ckeditor5-react';
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { logEvent } from '../../uitls/analatics'
 
 const defaultOptions = {
   loop: true,
@@ -120,6 +119,8 @@ export const CreateView = ({ creatFeed }) => {
   const nextStep = (e) => {
     if(e)
       e.preventDefault()
+
+    // logEvent("create add", step)
 
     if(step === 1 && inputs.images.length < 1) {
       alert.show("Please add atleast one image ", {
@@ -246,9 +247,6 @@ export const CreateView = ({ creatFeed }) => {
   let models = []
   if(inputs.make && inputs.make !== "")
     models = cars.filter(item => item.make === inputs.make)[0].models
-
-
-  console.log(inputs.description)
 
   return (
     <>

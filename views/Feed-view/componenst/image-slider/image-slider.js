@@ -33,16 +33,16 @@ export const ImageSlider = ({ images }) => {
   return (
     <div className="image-slider">
       <div className="image-slider__image">
-        <div style={{display: loading ? "flex" : "none"}} className="image-slider__image--loading">
+        {/* <div style={{display: loading ? "flex" : "none"}} className="image-slider__image--loading">
           <Lottie
             options={defaultOptions}
             height={100}
             width={200}/>
-        </div>
+        </div> */}
        {images.length > 0 ? (
-         <img style={{display: !loading ? "block" : "none"}} src={images[activeImage].url.insert(50, "w_550,h_400,c_fill,f_auto,q_auto/")} onLoad={imageLoaded} />
+         <img  src={images[activeImage].url.insert(50, "w_550,h_400,c_fill,f_auto,q_auto/")} onLoad={imageLoaded} />
        ) : (
-        <img style={{display: !loading ? "block" : "none"}} src={default_car} onLoad={imageLoaded} />
+        <img  src={default_car} onLoad={imageLoaded} />
        )}
       </div>
 {/*

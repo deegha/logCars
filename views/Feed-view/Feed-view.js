@@ -9,8 +9,16 @@ import default_car from "../../static/default_car.jpg"
 import { IoIosArrowRoundBack } from "react-icons/io"
 import Link from 'next/link'
 
-export const FeedView = ({vehicle, id}) => {
 
+
+String.prototype.insert = function (index, string) {
+  if (index > 0)
+    return this.substring(0, index) + string + this.substring(index, this.length);
+
+  return string + this;
+};
+
+export const FeedView = ({vehicle, id}) => {
   const [showNumber, toggleNumber] = useState(false)
   const toggle = () => toggleNumber(!showNumber)
   return (
@@ -18,23 +26,25 @@ export const FeedView = ({vehicle, id}) => {
      <Header
       keywords={`${vehicle.make} ${vehicle.model}`}
       title={`carlogs | ${vehicle.title}`}
-      ogImage={vehicle.images.length >0?vehicle.images[0].url: default_car}
+      ogImage={vehicle.images.length >0?vehicle.images[0].url.insert(50, "w_1080,h_600,c_fill,f_auto,q_auto/"): default_car}
       url={`${APP_BASE_URL}/feed?vehicle=${id}`}
       description={vehicle.title} />
     <div className="feed-view">
 
       <div className="feed-view_wrapper">
+      <div className="feed-view__row">
+        <Link href="/" >
+          <a>
+          <IoIosArrowRoundBack size={50} className="feed-view__back-btn" />
+          </a>
+        </Link>
+      </div>
         <div className="feed-view__row">
           <div className="feed-view__header-section">
-            <Link href="/" >
-              <a>
-              <IoIosArrowRoundBack size={50} className="feed-view__back-btn" />
-              </a>
-            </Link>
             <h1>{vehicle.title}</h1>
             <p>{moment.unix(vehicle.createdAt.seconds).fromNow()}</p>
           </div>
-          <div className="feed-view__header-section feed-view-price">
+          <div className="feed-view__header-section">
             <h2>Rs {numeral(vehicle.price).format('0,0')}</h2>
             <p>{numeral(vehicle.price).format('0.00 a')}</p>
           </div>

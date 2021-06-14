@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { cars, transmissionArr, fuelTypeArr } from "../../../../services/data"
 import { DropDown } from "../../../../components"
 import { AppContext } from "../../../../context/app-context"

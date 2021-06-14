@@ -20,6 +20,10 @@
     padding: 5px;
     background-color: #ffffff;
 
+    .header-search-icon {
+      cursor: pointer;
+    }
+
     input {
       padding: 2px 5px;
       border: none;
@@ -37,10 +41,15 @@
 
     img {
       margin: 5px;
-      width: 15px;
+      width: 20px;
     }
 
+    .search-loading__wrapper {
+      width: 10px;
+    }
     .search-loading {
+
+
       width: 10px;
       height: 10px;
       border-top: 1px solid #ffffff;

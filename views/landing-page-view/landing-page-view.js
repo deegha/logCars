@@ -53,7 +53,7 @@ export const LandingPageView = ({setSearchText, search, setAllFilters}) => {
           <div className="landing-page__form-item">
             <div className="landing-page__search-box">
               <img src={searchicon} />
-              <input type="text"  placeholder="Search for your dream car" ref={inputEl} onChange={(e) => setSearchText(e.target.value)} />
+              <input type="text" name="seachForm" placeholder="Search for your dream car" ref={inputEl} onChange={(e) => setSearchText(e.target.value)} />
             </div>
             <button type="submit" className="landing-page__search-button">Search</button>
           </div>

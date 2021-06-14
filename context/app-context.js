@@ -21,12 +21,26 @@ const AppContextProvider = (props) => {
   const [filterItems, setFilterItems] = useState(initialFilter)
   const [searchText, setSearchText] = useState("")
   const [items, setItems] = useState([])
-
   const [nextPage, setNextPage] = useState("")
 
 
+  const clearFilter = () => {
+    setFilterItems(initialFilter)
+  }
+
+  const clearModel = () => {
+
+
+    setFilters({
+      ...filters,
+      make: "",
+      model: ""
+    })
+  }
+
+
   return (
-    <AppContext.Provider value={{ setNextPage, nextPage, isLandingPage,  setLandingPage, page, setPage, filters, setFilters, searchText, setSearchText,items, setItems, filterItems, setFilterItems }}>
+    <AppContext.Provider value={{ clearModel, clearFilter, setNextPage, nextPage, isLandingPage,  setLandingPage, page, setPage, filters, setFilters, searchText, setSearchText,items, setItems, filterItems, setFilterItems }}>
       {props.children}
     </AppContext.Provider>
   )

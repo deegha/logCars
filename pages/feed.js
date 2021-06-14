@@ -1,9 +1,9 @@
 import firebase  from "firebase"
 import { FeedView } from "../views/Feed-view/Feed-view"
 
-const Feed = ({ feed }) => {
+const Feed = ({ feed, id }) => {
   return (
-    <FeedView vehicle={feed} />
+    <FeedView vehicle={feed} id={id} />
   )
 }
 

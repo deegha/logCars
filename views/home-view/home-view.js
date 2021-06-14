@@ -1,12 +1,16 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Header, Loader, Card, Footer} from "../../components"
 import { Filter } from "./components/filter/filter"
 import "./styles.scss"
 import Lottie from 'react-lottie'
 import loadinganimation from "../../static/preloader.json"
 import noRecords from "../../static/no-records.json"
+import { AppContext } from "../../context/app-context"
 
 import { BsFilter } from "react-icons/bs"
+import { IoIosCloseCircleOutline } from "react-icons/io"
+
+
 
 
 const defaultOptions = {
@@ -43,6 +47,7 @@ export const HomePage = ({
   setSearchText }) => {
 
   const [showFilter, setShowFilters] = useState(false)
+  const { clearModel } = useContext(AppContext)
   const pageTitle = "Car logs"
 
 
@@ -63,13 +68,16 @@ export const HomePage = ({
       <div className={"home-container"} >
         <div className={`home-innerWrapper-filter ${showFilter && "home-innerWrapper-filter--show"}`}>
           <Filter filters={filters} setFilterItem={setFilterItem} setFilters={setFilters} setShowFilters={setShowFilters} />
+
         </div>
         <div className={"home-innerWrapper"}>
-          <div className="home-show-filters" onClick={() => setShowFilters(!showFilter)} >
+          <div className="home-show-filters" >
+            <div  onClick={() => setShowFilters(!showFilter)} className="home-show-filters-icon">
             <BsFilter size={"52"} color="#e84118" />
+            </div>
+            <a href="http://www.bestweb.lk/vote/site/carlogs_lk"><img src="https://www.bw2020.lk/vote4us.png" alt="logo" width="40" height="40"  /></a>
+            {filters.make !== "" && <div className="home__filter-info"><p>You are looking at {filters.make}</p> <div onClick={()=> clearModel()} className="home-show-clear-filters-icon"><IoIosCloseCircleOutline size={"22"} color="#d63031" /> </div></div>}
           </div>
-
-
 
           {!fetchingItems && items.map( (item, index) => {
             const track = item

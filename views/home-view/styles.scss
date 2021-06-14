@@ -91,13 +91,38 @@
 
       .home-show-filters {
         display: block;
-
         padding: 0px 10px;
-
-        width: 40px;
+        justify-content: flex-start;
         display: flex;
-        justify-content: center;
-        cursor: pointer;
+
+        align-items: center;
+
+        .home-show-filters-icon {
+          cursor: pointer;
+        }
+
+        .home__filter-info {
+          background-color: #636e72;
+          padding: 3px 10px;
+          border-radius: 17px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          justify-content: center;
+
+          .home-show-clear-filters-icon {
+            cursor: pointer;
+            display: flex;
+          }
+          p {
+            color: #b2bec3;
+            font-size: 12px;
+            padding: 0;
+            margin: 0;
+            margin-right: 12px;
+          }
+        }
+
       }
     }
 
