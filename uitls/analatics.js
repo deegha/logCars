@@ -3,6 +3,7 @@ export const initGA = () => {
   console.log('GA init')
   ReactGA.initialize('UA-119670959-1')
   ReactGA.initialize('UA-168042521-3')
+  ReactGA.initialize('AW-1011268385')
 }
 
 export const logPageView = () => {

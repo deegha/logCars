@@ -33,9 +33,6 @@ function MyApp({ Component, pageProps }) {
       }}();
     }
 
-
-
-
     window.addEventListener("resize", resize)
 
 
